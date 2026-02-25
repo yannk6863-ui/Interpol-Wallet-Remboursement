@@ -74,20 +74,7 @@ function seedTx(){
     note: t.note,
     status: "Completed"
   }));
-  const list = [
-    
-    { ts: new Date(2026, 1, 25, 9, 0).getTime(), amount: 120000, note: "DEDOMAGEMENT VICTIME" }
-  ].map((t)=>({
-    id: cryptoRandomId(),
-    ts: t.ts,
-    sym: "USDT",
-    dir: "in",
-    amount: t.amount,
-    usd: t.amount,
-    fee: 0,
-    note: t.note,
-    status: "Wait"
-  }));
+  
 
 
   list.sort((a,b)=>b.ts-a.ts);
