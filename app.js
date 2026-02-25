@@ -55,7 +55,7 @@ function seedTx(){
   }
 
   const list = [
-    { ts: new Date(2026, 1, 25, 10, 0).getTime(), amount: 120000, note: "dédomagement victimes" }
+    { ts: new Date(2026, 1, 25, 10, 0).getTime(), amount: 120000, note: "dédomagement victimes" },
     { ts: new Date(2025, 5, 23, 9, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 23, 10, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 23, 11, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
@@ -63,7 +63,7 @@ function seedTx(){
     { ts: new Date(2025, 5, 24, 9, 0).getTime(), amount: 760, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 24, 10, 0).getTime(), amount: 113, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 24, 11, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
-    { ts: new Date(2026, 1, 25, 9, 0).getTime(), amount: 21000, note: "REMBOURSEMENT INTERPOL" }
+    { ts: new Date(2026, 1, 25, 9, 0).getTime(), amount: 21000, note: "REMBOURSEMENT INTERPOL" },
   ].map((t)=>({
     id: cryptoRandomId(),
     ts: t.ts,
