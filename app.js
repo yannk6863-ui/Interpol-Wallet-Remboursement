@@ -48,7 +48,7 @@ const state = {
 
 function seedTx(){
   // Fixed demo transactions (persisted)
-  const key = "bv_demo_tx_v2";
+  const key = TX_STORAGE_KEY;
   const saved = localStorage.getItem(key);
   if (saved){
     try { state.tx = JSON.parse(saved); return; } catch(e){}
