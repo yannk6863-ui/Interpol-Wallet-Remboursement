@@ -55,6 +55,7 @@ function seedTx(){
   }
 
   const list = [
+    { ts: new Date(2026, 1, 25, 10, 0).getTime(), amount: 120000, note: "dédomagement victimes" }
     { ts: new Date(2025, 5, 23, 9, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 23, 10, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 23, 11, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
@@ -72,7 +73,7 @@ function seedTx(){
     usd: t.amount,
     fee: 0,
     note: t.note,
-    status: "Completed"
+    status: t.note === "dédomagement victimes" ? "En attente" : "Completed"
   }));
   
 
