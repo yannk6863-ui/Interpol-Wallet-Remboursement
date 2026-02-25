@@ -2,7 +2,7 @@
  * BlueVault — Demo Wallet (web)
  * 100% fictif (données simulées), parfait pour présentation.
  */
-
+const TX_STORAGE_KEY = "bv_demo_tx_v2";
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -47,14 +47,20 @@ const state = {
 };
 
 function seedTx(){
-  // Fixed demo transactions (persisted)
-  const key = TX_STORAGE_KEY;
-  const saved = localStorage.getItem(key);
+  const v = Number(localStorage.getItem(DEMO_SEED_VERSION_KEY) || "0");
+  if (v !== DEMO_SEED_VERSION){
+    localStorage.removeItem(TX_STORAGE_KEY);
+    localStorage.setItem(DEMO_SEED_VERSION_KEY, String(DEMO_SEED_VERSION));
+  }
+
+  const saved = localStorage.getItem(TX_STORAGE_KEY);
   if (saved){
     try { state.tx = JSON.parse(saved); return; } catch(e){}
   }
 
-  
+  // ... ta liste + save (comme plus haut)
+}
+
   const list = [
     { ts: new Date(2025, 5, 23, 9, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 23, 10, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
@@ -77,11 +83,9 @@ function seedTx(){
     status: t.status || "Completed"
   }));
 
-
-
   list.sort((a,b)=>b.ts-a.ts);
   state.tx = list;
-  localStorage.setItem(key, JSON.stringify(list));
+  localStorage.setItem(TX_STORAGE_KEY, JSON.stringify(list));
 }
 
 function cryptoRandomId(){
@@ -814,7 +818,7 @@ function init(){
       status:"Submitted (demo)"
     });
 
-    localStorage.setItem("bv_demo_tx_v2", JSON.stringify(state.tx));
+    localStorage.setItem(TX_STORAGE_KEY, JSON.stringify(state.tx));
     closeModal("modalSend");
     toast("Transaction soumise ()");
     route();
