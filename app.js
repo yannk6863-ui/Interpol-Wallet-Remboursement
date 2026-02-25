@@ -2,7 +2,9 @@
  * BlueVault — Demo Wallet (web)
  * 100% fictif (données simulées), parfait pour présentation.
  */
-const TX_STORAGE_KEY = "bv_demo_tx_v2";
+const TX_STORAGE_KEY = "bv_demo_tx_v3";
+const DEMO_SEED_VERSION_KEY = "bv_demo_seed_version";
+const DEMO_SEED_VERSION = 1;
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -58,9 +60,6 @@ function seedTx(){
     try { state.tx = JSON.parse(saved); return; } catch(e){}
   }
 
-  // ... ta liste + save (comme plus haut)
-}
-
   const list = [
     { ts: new Date(2025, 5, 23, 9, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 23, 10, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
@@ -86,6 +85,8 @@ function seedTx(){
   list.sort((a,b)=>b.ts-a.ts);
   state.tx = list;
   localStorage.setItem(TX_STORAGE_KEY, JSON.stringify(list));
+}
+
 
 function cryptoRandomId(){
   // lightweight random id (demo)
