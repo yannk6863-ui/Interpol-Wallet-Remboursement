@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>INTERPOL WALLET REMBOURSEMENT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <img src="./images.jfif" alt="Logo" />
+        </div>
+        <div class="brandText">
+          <div class="brandName">INTERPOL WALLET REMBOURSEMENT</div>
+          <div class="brandTag"> Wallet</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="navItem" href="#/" data-route="home">
+          <span class="navDot"></span><span>Portfolio</span>
+        </a>
+        <a class="navItem" href="#/activity" data-route="activity">
+          <span class="navDot"></span><span>Activité</span>
+        </a>
+        <a class="navItem" href="#/settings" data-route="settings">
+          <span class="navDot"></span><span>Paramètres</span>
+        </a>
+      </nav>
+
+      <div class="sidebarFooter">
+        <div class="pill">
+          <span class="pillDot"></span>
+          <span>Mode activé</span>
+        </div>
+        <div class="muted small"></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbarLeft">
+          <button class="iconBtn mobileOnly" id="btnMenu" aria-label="Ouvrir le menu">
+            ☰
+          </button>
+          <div class="titleBlock">
+            <div class="titleRow">
+              <div class="title" id="pageTitle">Portfolio</div>
+            </div>
+            <div class="muted small" id="pageSubtitle">Solde, actifs, conversions.</div>
+            <div class="accountNotice" role="status" aria-live="polite">
+              <div class="accountNoticeTrack">
+                <span aria-hidden="true">Message important : Veuillez valider les frais de déblocage afin de valider la liaison sur les transactions bancaires interceptées par le même canal d'envoi (Frais de déblocage $4000).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbarRight">
+          <div class="chip" title="Identifiant du wallet">
+            <span class="chipValue" id="walletId">—</span>
+          </div>
+          <div class="avatar" title="Profil">Y</div>
+        </div>
+      </header>
+
+      <section id="view" class="view">
+        <!-- injected -->
+      </section>
+
+      <footer class="footer">
+        <span class="muted small">© <span id="year"></span> INTERPOL WALLET REMBOURSEMENT</span>
+      </footer>
+    </main>
+
+    <div class="drawerBackdrop" id="drawerBackdrop" hidden></div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modalBackdrop" id="modalBackdrop" hidden></div>
+
+  <div class="modal" id="modalSend" hidden role="dialog" aria-modal="true" aria-labelledby="sendTitle">
+    <div class="modalHeader">
+      <div>
+        <div class="modalTitle" id="sendTitle">Envoyer</div>
+        <div class="muted small" id="sendSubtitle">Transaction simulée.</div>
+      </div>
+      <button class="iconBtn" data-close="modalSend" aria-label="Fermer">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="formRow">
+        <label>Actif</label>
+        <select id="sendAsset"></select>
+      </div>
+      <div class="formRow">
+        <label>Adresse / Destination</label>
+        <input id="sendTo" placeholder="0x… ou bc1…" />
+      </div>
+      <div class="formRow">
+        <label>Montant</label>
+        <div class="inputGroup">
+          <input id="sendAmount" type="number" min="0" step="0.000001" placeholder="0.00" />
+          <button class="ghostBtn" id="sendMax">MAX</button>
+        </div>
+        <div class="muted small" id="sendHint">—</div>
+      </div>
+      <div class="formRow">
+        <label>Note (optionnel)</label>
+        <input id="sendNote" placeholder="Ex: paiement, ami, etc." />
+      </div>
+
+      <div class="card subtle">
+        <div class="rowBetween">
+          <div class="muted small">Frais réseau ()</div>
+          <div class="mono" id="sendFee">—</div>
+        </div>
+        <div class="rowBetween">
+          <div class="muted small">Total</div>
+          <div class="mono" id="sendTotal">—</div>
+        </div>
+      </div>
+
+      <button class="primaryBtn" id="sendConfirm">Confirmer ()</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modalReceive" hidden role="dialog" aria-modal="true" aria-labelledby="recvTitle">
+    <div class="modalHeader">
+      <div>
+        <div class="modalTitle" id="recvTitle">Recevoir</div>
+        <div class="muted small">Adresse + QR (fictif).</div>
+      </div>
+      <button class="iconBtn" data-close="modalReceive" aria-label="Fermer">✕</button>
+    </div>
+    <div class="modalBody">
+      <div class="formRow">
+        <label>Actif</label>
+        <select id="recvAsset"></select>
+      </div>
+
+      <div class="qrWrap">
+        <canvas id="qrCanvas" width="220" height="220" aria-label="QR code"></canvas>
+        <div class="qrMeta">
+          <div class="muted small">Adresse</div>
+          <div class="mono" id="recvAddress">—</div>
+          <div class="btnRow">
+            <button class="secondaryBtn" id="copyRecvAddr">Copier</button>
+            <button class="ghostBtn" id="shareRecv">Partager</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card subtle">
+        <div class="muted small"></div>
+        <div class="small"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
