@@ -86,7 +86,6 @@ function seedTx(){
   list.sort((a,b)=>b.ts-a.ts);
   state.tx = list;
   localStorage.setItem(TX_STORAGE_KEY, JSON.stringify(list));
-}
 
 function cryptoRandomId(){
   // lightweight random id (demo)
