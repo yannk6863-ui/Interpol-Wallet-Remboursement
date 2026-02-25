@@ -536,7 +536,7 @@ function renderSettings(){
   });
 
   $("#resetDemo").addEventListener("click", ()=>{
-    localStorage.removeItem("bv_demo_tx_v2");
+    localStorage.removeItem(TX_STORAGE_KEY);
     seedTx();
     toast(" réinitialisée");
     route();
