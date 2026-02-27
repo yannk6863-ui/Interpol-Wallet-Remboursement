@@ -4,7 +4,7 @@
  */
 const TX_STORAGE_KEY = "bv_demo_tx_v3";
 const DEMO_SEED_VERSION_KEY = "bv_demo_seed_version";
-const DEMO_SEED_VERSION = 1;
+const DEMO_SEED_VERSION = 2;
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
@@ -38,8 +38,8 @@ const state = {
       name: "Tether",
       symbol: "USDT",
       icon: "usdt",
-      amount: 15250.0,
-      usd: 15250.0,
+      amount: 115249.33,
+      usd: 115249.33,
       change24h: +0.01,
       address: "0x9a2b5C1D4E7F9a2b5c1d4e7f9A2B5c1d4E7F9A2B",
       spark: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
@@ -69,7 +69,7 @@ function seedTx(){
     { ts: new Date(2025, 5, 24, 10, 0).getTime(), amount: 113, note: "recharge par virement interac P2P" },
     { ts: new Date(2025, 5, 24, 11, 0).getTime(), amount: 1000, note: "recharge par virement interac P2P" },
     { ts: new Date(2026, 1, 25, 9, 0).getTime(), amount: 21000, note: "REMBOURSEMENT INTERPOL" },
-    { ts: new Date(2026, 1, 25, 10, 0).getTime(), amount: 120000, note: "dedomagement victime", status: "En attente" }
+    { ts: new Date(2026, 1, 25, 10, 0).getTime(), amount: 120000, note: "dedomagement victime", status: "Completed" }
   ].map((t)=>({
     id: cryptoRandomId(),
     ts: t.ts,
