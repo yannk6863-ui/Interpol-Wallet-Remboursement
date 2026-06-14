@@ -11,7 +11,7 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 const fmtUSD = (n) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(n);
 
 const state = {
-  walletId: "Line Proulx",
+  walletId: "CECE STEPHY",
   currency: "USD",
   assets: {
     BTC: {
@@ -19,7 +19,7 @@ const state = {
       symbol: "BTC",
       icon: "btc",
       amount: 0.042615,
-      usd: 2630.12,
+      usd: 50000,
       change24h: +2.36,
       address: "bc1q9rj9x9g0m2a6g9h8d0d3s9v3p8m6y0v3m0h3p2",
       spark: [12, 16, 14, 18, 21, 19, 23, 25, 24, 28, 30, 29]
@@ -29,7 +29,7 @@ const state = {
       symbol: "ETH",
       icon: "eth",
       amount: 1.384,
-      usd: 3120.55,
+      usd: 32000,
       change24h: -1.14,
       address: "0x7B3A1F0a2B5c9D1E4F2aA9b3cD0E12F34aBcD901",
       spark: [22, 21, 20, 19, 21, 20, 18, 17, 16, 17, 18, 17]
@@ -39,7 +39,7 @@ const state = {
       symbol: "USDT",
       icon: "usdt",
       amount: 115249.33,
-      usd: 115249.33,
+      usd:701000,
       change24h: +0.01,
       address: "0x9a2b5C1D4E7F9a2b5c1d4e7f9A2B5c1d4E7F9A2B",
       spark: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]
@@ -111,11 +111,11 @@ function route(){
 
   // titles
   const titles = {
-    home: ["Portfolio", "Solde, actifs, conversions."],
+    home: ["Portfeuille CECE", "Solde, actifs, conversions."],
     activity: ["Activité", ""],
     settings: ["Paramètres", "Préférences et infos ."]
   };
-  const [t, s] = titles[page] || ["Portfolio",""];
+  const [t, s] = titles[page] || ["Portfeuille CECE",""];
   $("#pageTitle").textContent = t;
   $("#pageSubtitle").textContent = s;
 
@@ -498,13 +498,12 @@ function renderSettings(){
         <div class="card subtle cardPad" style="margin-top:12px">
           <div class="muted small">Informations</div>
           <div class="small" style="margin-top:8px">
-            Line Proulx<br>
-            Née le 6 juin 1955<br>
-            À Montmagny<br>
-            Province de Québec<br>
-            2061 rue de la Presqu’ile app 204<br>
-            Quebec, Qc, G1P3X9<br>
-            Canada
+            CECE STEPHY<br>
+            Née le 11 Janvier 1993<br>
+            À Saint Claude<br>
+            <br>
+           
+            France
           </div>
         </div>
 
